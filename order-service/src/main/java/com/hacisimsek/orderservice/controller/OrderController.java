@@ -19,8 +19,12 @@ public class OrderController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public String placeOrder(@RequestBody OrderRequest orderRequest){
-        orderService.placeOrder(orderRequest);
-        return "Order Ok";
+        boolean isOrdered = orderService.placeOrder(orderRequest);
+        if(isOrdered){
+            return "Order Ok";
+        } else {
+            return "Order Failed";
+        }
     }
 
     public CompletableFuture<String> fallbackMethod(OrderRequest orderRequest, RuntimeException runtimeException) {

@@ -66,25 +66,25 @@
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>io.confluent</groupId>
-			<artifactId>kafka-avro-serializer</artifactId>
-			<version>7.6.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/libs/kafka-avro-serializer-7.6.0.jar</systemPath>
-		</dependency>
-		<dependency>
-			<groupId>io.confluent</groupId>
-			<artifactId>kafka-schema-registry-client</artifactId>
-			<version>7.6.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/libs/kafka-schema-registry-client-7.6.0.jar</systemPath>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.avro</groupId>
-			<artifactId>avro</artifactId>
-			<version>1.11.3</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>io.confluent</groupId>-->
+<!--			<artifactId>kafka-avro-serializer</artifactId>-->
+<!--			<version>7.6.0</version>-->
+<!--			<scope>system</scope>-->
+<!--			<systemPath>${project.basedir}/libs/kafka-avro-serializer-7.6.0.jar</systemPath>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>io.confluent</groupId>-->
+<!--			<artifactId>kafka-schema-registry-client</artifactId>-->
+<!--			<version>7.6.0</version>-->
+<!--			<scope>system</scope>-->
+<!--			<systemPath>${project.basedir}/libs/kafka-schema-registry-client-7.6.0.jar</systemPath>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.apache.avro</groupId>-->
+<!--			<artifactId>avro</artifactId>-->
+<!--			<version>1.11.3</version>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka-test</artifactId>
