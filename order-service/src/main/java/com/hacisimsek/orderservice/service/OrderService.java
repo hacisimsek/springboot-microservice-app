@@ -26,7 +26,7 @@ public class OrderService {
     private final ObjectMapper objectMapper;
 
 
-    public void placeOrder(OrderRequest orderRequest){
+    public boolean placeOrder(OrderRequest orderRequest){
         var isProductInStock = inventoryClient.isInStock(orderRequest.skuCode(), orderRequest.quantity());
 
         if(isProductInStock){
@@ -41,8 +41,8 @@ public class OrderService {
             OrderPlacedEvent orderPlacedEvent = new OrderPlacedEvent();
             orderPlacedEvent.setOrderNumber(order.getOrderNumber());
             orderPlacedEvent.setEmail(orderRequest.userDetails().email());
-            orderPlacedEvent.setUsername(orderRequest.userDetails().firstName());
-            orderPlacedEvent.setSurname(orderRequest.userDetails().lastName());
+//            orderPlacedEvent.setUsername(orderRequest.userDetails().firstName());
+//            orderPlacedEvent.setSurname(orderRequest.userDetails().lastName());
             log.info("Start - Sending OrderPlacedEvent {} to Kafka topic order-placed", orderPlacedEvent);
             String jsonMessage = null;
             try {
@@ -52,9 +52,10 @@ public class OrderService {
             }
             kafkaTemplate.send("order-placed", jsonMessage);
             log.info("Stop - Sending OrderPlacedEvent {} to Kafka topic order-placed", orderPlacedEvent);
-
+            return true;
         } else {
-            throw new RuntimeException("Product with SkuCode" + orderRequest.skuCode() + "is not in stock");
+            log.info("Product with skuCode {} is out of stock", orderRequest.skuCode());
+            return false;
         }
     }
 }
